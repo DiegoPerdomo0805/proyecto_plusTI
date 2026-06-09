@@ -27,7 +27,7 @@ Reducir la cantidad de falsos positivos generados por un modelo de clasificació
 
 La métrica principal utilizada para evaluar este objetivo fue:
 
-FP Ratio = FP / (TP + FP)
+**FP Ratio = FP / (TP + FP)**
 
 donde:
 
@@ -36,31 +36,24 @@ TP = verdaderos positivos
 
 Esta métrica representa la proporción de alertas generadas por el modelo que realmente corresponden a falsos positivos.
 
-Dataset
+## Dataset
 
 El dataset utilizado corresponde a transacciones sintéticas de tarjetas de crédito de un banco de Bolivia con clientela VIP.
 
-Características generales del dataset:
+## Características generales del dataset:
 
-Transacciones legítimas y fraudulentas.
-Periodo cubierto: enero 2025 a junio 2025.
-Aproximadamente 100,000 transacciones.
-5,000 clientes.
-67 variables originales.
-Formato basado en ISO 8583.
-Variable objetivo: is_fraud.
+- Transacciones legítimas y fraudulentas.
+- Periodo cubierto: enero 2025 a junio 2025.
+- Aproximadamente 100,000 transacciones.
+- 5,000 clientes.
+- 67 variables originales.
+- Formato basado en ISO 8583.
+- Variable objetivo: is_fraud.
 
-El archivo esperado por el notebook es:
+## Interpretación de resultados
 
-01_bo_vip_seed22_n100000.csv
-Estructura del proyecto
+El modelo seleccionado reduce de forma significativa la cantidad de falsos positivos frente al modelo base. Aunque el FP Ratio absoluto sigue siendo elevado, la mejora obtenida representa una reducción importante en la carga operativa de revisión de alertas.
 
-La estructura esperada del repositorio es:
+Un punto importante observado es que el modelo base puede obtener un AUC ligeramente superior, pero esto no implica que sea mejor para el objetivo asignado. En este proyecto, el objetivo no era maximizar AUC, sino reducir falsos positivos manteniendo una detección mínima del 90%.
 
-.
-├── README.md
-├── fraud_model.ipynb
-├── data_explore.ipynb
-├── datasets/
-│   └── 01_bo_vip_seed22_n100000.csv
-└── requirements.txt
+Por esta razón, el modelo cost_sensitive fue considerado superior desde una perspectiva operacional.
