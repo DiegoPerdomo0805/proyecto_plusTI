@@ -8,7 +8,6 @@ El objetivo específico de esta parte del proyecto es diseñar, implementar y ev
 
 La variable objetivo del problema es:
 
-```text
 is_fraud
 
 con dos posibles clases:
